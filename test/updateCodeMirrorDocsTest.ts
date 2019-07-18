@@ -52,7 +52,7 @@ describe('updateCodeMirrorDocs', () => {
   })
 
   it('handles a removed text node without crashing', () => {
-    const doc1: TestDocWithManyTexts = Automerge.init()
+    const doc1: TestDocWithManyTexts = <any>Automerge.init()
     const doc2: TestDocWithManyTexts = Automerge.change(doc1, draft => {
       draft.texts = []
       draft.texts.push(new Automerge.Text())

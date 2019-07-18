@@ -1,1 +1,1 @@
-import './codeMirrorEnv'
+import './codeMirrorEnv';

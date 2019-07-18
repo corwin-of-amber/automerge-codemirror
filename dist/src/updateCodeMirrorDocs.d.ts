@@ -1,5 +1,5 @@
-import Link from './Link'
-import Mutex from './Mutex'
+import Link from './Link';
+import Mutex from './Mutex';
 /**
  * Applies the diff between two Automerge documents to CodeMirror instances
  *
@@ -8,9 +8,4 @@ import Mutex from './Mutex'
  * @param links
  * @param mutex
  */
-export default function updateCodeMirrorDocs<T>(
-  oldDoc: T,
-  newDoc: T,
-  links: Set<Link<T>>,
-  mutex: Mutex
-): T
+export default function updateCodeMirrorDocs<T>(oldDoc: T, newDoc: T, links: Set<Link<T>>, mutex: Mutex): T;

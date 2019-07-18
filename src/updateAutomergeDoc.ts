@@ -1,5 +1,5 @@
-import { change, Text } from 'automerge'
-import { Doc, EditorChange } from 'codemirror'
+import { Doc, change, Text } from 'automerge'
+import { Doc as CmDoc, EditorChange } from 'codemirror'
 
 /**
  * Applies CodeMirror changes and returns a new Automerge Doc
@@ -10,13 +10,13 @@ import { Doc, EditorChange } from 'codemirror'
  * @param editorChange the change
  */
 export default function updateAutomergeDoc<T>(
-  doc: T,
-  getText: (doc: T) => Text,
-  codeMirrorDoc: Doc,
+  doc: Doc<T>,
+  getText: (doc: Doc<T>) => Text,
+  codeMirrorDoc: CmDoc,
   editorChange: EditorChange
-): T {
+): Doc<T> {
   return change(doc, draft => {
-    const text = getText(draft)
+    const text = getText(<Doc<T>>draft)
     if (!text) return
     const startPos = codeMirrorDoc.indexFromPos(editorChange.from)
 

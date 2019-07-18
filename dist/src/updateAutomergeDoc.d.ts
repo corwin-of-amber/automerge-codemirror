@@ -1,5 +1,5 @@
-import { Text } from 'automerge'
-import { Doc, EditorChange } from 'codemirror'
+import { Doc, Text } from 'automerge';
+import { Doc as CmDoc, EditorChange } from 'codemirror';
 /**
  * Applies CodeMirror changes and returns a new Automerge Doc
  *
@@ -8,9 +8,4 @@ import { Doc, EditorChange } from 'codemirror'
  * @param codeMirrorDoc the editor doc
  * @param editorChange the change
  */
-export default function updateAutomergeDoc<T>(
-  doc: T,
-  getText: (doc: T) => Text,
-  codeMirrorDoc: Doc,
-  editorChange: EditorChange
-): T
+export default function updateAutomergeDoc<T>(doc: Doc<T>, getText: (doc: Doc<T>) => Text, codeMirrorDoc: CmDoc, editorChange: EditorChange): Doc<T>;

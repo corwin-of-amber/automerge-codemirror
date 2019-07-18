@@ -1,6 +1,6 @@
-import { Change, DocSet, WatchableDoc } from 'automerge'
+import { Doc, Change, DocSet, WatchableDocHandler } from 'automerge'
 
-type Handler<Doc> = (doc: Doc) => void
+type Handler<Doc> = WatchableDocHandler<Doc>
 
 /**
  * Implements the API of Automerge.WatchableDoc, but backed by an Automerge.DocSet.
@@ -9,14 +9,14 @@ type Handler<Doc> = (doc: Doc) => void
  * approach could have been to implement a WatchableDocConnection, but that
  * is a lot more work
  */
-export default class DocSetWatchableDoc<T> implements WatchableDoc<T> {
+export default class DocSetWatchableDoc<T> /*implements WatchableDoc<T>*/ {
   private handlers = new Set<Handler<T>>()
 
   constructor(
     public readonly docSet: DocSet<T>,
     public readonly docId: string
   ) {
-    this.docSet.registerHandler((updatedDocId: string, updatedDoc: T) => {
+    this.docSet.registerHandler((updatedDocId: string, updatedDoc) => {
       if (updatedDocId === docId) {
         this.handlers.forEach(handler => handler(updatedDoc))
       }
@@ -28,10 +28,10 @@ export default class DocSetWatchableDoc<T> implements WatchableDoc<T> {
   }
 
   public set(doc: T) {
-    this.docSet.setDoc(this.docId, doc)
+    this.docSet.setDoc(this.docId, <Doc<T>>doc)
   }
 
-  public applyChanges(changes: Change<T>[]) {
+  public applyChanges(changes: Change[]) {
     this.docSet.applyChanges(this.docId, changes)
     return this.get()
   }
