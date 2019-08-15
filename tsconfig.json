@@ -25,6 +25,6 @@
     "esModuleInterop": true,
     "types": ["node", "automerge", "codemirror", "mocha"]
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["index.ts"],
   "exclude": ["node_modules"]
 }

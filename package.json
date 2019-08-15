@@ -2,8 +2,8 @@
   "name": "automerge-codemirror",
   "version": "4.0.5",
   "description": "Automerge plugin for CodeMirror",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/aslakhellesoy/automerge-codemirror",
   "author": "Aslak Hellesøy",
   "license": "MIT",
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "automerge": "^0.11.0",
-    "codemirror": "^5.48.0"
+    "codemirror": "^5.48.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@types/codemirror": "0.0.76",
