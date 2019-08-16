@@ -10,18 +10,22 @@
   "scripts": {
     "nyc": "nyc --reporter=html --reporter=text mocha test/**/*.{ts,tsx}",
     "test": "mocha test/**/*.{ts,tsx}",
-    "build": "tsc"
+    "build": "tsc && browserify example/example.js -o dist/example.js"
   },
   "dependencies": {
     "automerge": "^0.11.0",
-    "codemirror": "^5.48.0",
+    "automerge-slots": "github:corwin-of-amber/automerge-slots",
     "lodash": "^4.17.15"
+  },
+  "peerDependencies": {
+    "codemirror": "^5.48.0"
   },
   "devDependencies": {
     "@types/codemirror": "0.0.76",
     "@types/jsdom": "^12.2.4",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.6.8"
+    "@types/node": "^12.6.8",
+    "codemirror": "^5.48.0"
   },
   "husky": {
     "hooks": {
