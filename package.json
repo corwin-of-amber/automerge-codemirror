@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/codemirror": "0.0.76",
     "@types/jsdom": "^12.2.4",
+    "@types/lodash": "^4.14.137",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.8",
     "codemirror": "^5.48.0"
